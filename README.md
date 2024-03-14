@@ -13,7 +13,6 @@
 ## Prerequisites
 Before installing and running the software, ensure you have Python 3.6 or higher installed, as well as the following packages:
 - pandas
-- tkinter
 - PIL (Python Imaging Library)
 - plotly
 - networkx
