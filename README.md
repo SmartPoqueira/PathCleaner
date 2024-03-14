@@ -1,4 +1,4 @@
-# LPR Data Processing and Visualization Software
+# PathCleaner - LPR Data Processing and Visualization Software
 
 ## Overview
 "LPR Data Processing and Visualization Software" is a desktop application designed for processing, correcting, and visualizing vehicle license plate data captured through a License Plate Recognition (LPR) system. This tool allows users to load plate data, apply correction algorithms to enhance data accuracy, calculate routes based on the corrected plates, and visualize these routes through graphs.
