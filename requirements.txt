@@ -1,0 +1,6 @@
+pandas
+Pillow
+plotly
+networkx
+textdistance
+tkinter
