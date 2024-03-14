@@ -1,20 +1,9 @@
 from abc import ABC, abstractmethod
 import pandas as pd
-from tqdm import tqdm
-from Levenshtein import distance as levenshtein_distance
-import textdistance
-
-from abc import ABC, abstractmethod
-import pandas as pd
 import re
 import textdistance
 from tqdm import tqdm
 
-from abc import ABC, abstractmethod
-import pandas as pd
-import re
-import textdistance
-from tqdm import tqdm
 
 class Corrector(ABC):
     def __init__(self, normalize=False):
@@ -87,7 +76,7 @@ class SimpleRouteCalculator(RouteCalculator):
                 if prev_row is not None:
                     time_diff = (row['date'] - prev_row['date']).total_seconds() / 60
 
-                    if time_diff > MAX_TIME_BETWEEN_TRIPS  and prev_row['direction'] == 'OUT': #and prev_row['camera_ID'] in ['PAM_1', 'PAM_2', 'BUB']
+                    if time_diff > MAX_TIME_BETWEEN_TRIPS
                         if current_trip['entry_date'] is not None:
                             current_trip['exit_date'] = prev_row['date']
                             routes_info.append(current_trip)
@@ -97,7 +86,7 @@ class SimpleRouteCalculator(RouteCalculator):
                     current_trip['times'].append(time_diff)
                 current_trip['route'].append(row['camera_ID'])
                 current_trip['directions'].append(row['direction'])
-                if current_trip['entry_date'] is None and row['direction'] == 'IN':
+                if current_trip['entry_date'] is None
                     current_trip['entry_date'] = row['date']
 
                 prev_row = row
@@ -170,23 +159,3 @@ class DataProcessor:
         self.data['cumulative_entries'] = 1
         self.data.sort_values(by=['num_plate', 'entry_date'], inplace=True)
         self.data['cumulative_entries'] = self.data.groupby('num_plate').cumcount() + 1
-
-
-
-def main():
-    filepath = 'datos_raw_orig_2.csv'
-    corrector = LevenshteinCorrector()
-    route_calculator = SimpleRouteCalculator()
-
-    processor = DataProcessor(filepath, corrector, route_calculator)
-    processor.load_and_prepare_data()
-    processor.correct_num_plates_and_remove_hashes()
-    processor.calculate_and_adjust_routes(1440)
-    processor.verify_and_classify_visits()
-
-    # Filtrar datos y guardar el resultado
-    filtered_data = processor.data[processor.data['route'].apply(lambda x: len(x) > 1)]
-    filtered_data.to_csv('2_mar_final.csv', index=False)
-
-if __name__ == "__main__":
-    main()
