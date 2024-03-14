@@ -17,7 +17,7 @@ class DataProcessor:
 
     def correct_num_plates_and_remove_hashes(self):
         self.data = self.corrector.correct_num_plates(self.data)
-        self.data = self.data[~self.data['num_plate'].str.contains('#')]
+        self.data = self.data[~self.data['num_plate'].str.lower().str.contains('[^a-z0-9]', regex=True)]
         self.data = self.data[~(self.data['num_plate'] == 'unknown') & (self.data['num_plate'].str.len() > 3)]
 
     def calculate_and_adjust_routes(self, MAX_TIME_BETWEEN_TRIPS, insertions):

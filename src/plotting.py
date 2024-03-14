@@ -55,13 +55,12 @@ def generate_and_save_plotly_graph(json_output_path, image_output_path):
 
     fig = go.Figure(data=[edge_trace, node_trace],
                     layout=go.Layout(
-                        title='<br>Network graph made with Python',
+                        title='<br>Graph Visualization',
                         titlefont=dict(size=16),
                         showlegend=False,
                         hovermode='closest',
                         margin=dict(b=20,l=5,r=5,t=40),
                         annotations=[ dict(
-                            text="Python code: <a href='https://www.python.org/'> https://www.python.org/</a>",
                             showarrow=False,
                             xref="paper", yref="paper",
                             x=0.005, y=-0.002 ) ],
