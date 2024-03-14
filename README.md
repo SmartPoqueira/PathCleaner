@@ -41,7 +41,7 @@ Follow the instructions in the graphical interface to load data, select correcti
 If you have a suggestion that would make this better, please fork the repository and create a pull request.
 
 ## Contact
-Your Name - albduranlopez@ugr.es
+Email: albduranlopez@ugr.es
 
 Project Link: https://wpd.ugr.es/~smartpoqueira/en/
 
